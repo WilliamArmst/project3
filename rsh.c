@@ -36,6 +36,7 @@ void cd(char* destination) {
 }
 
 void help() {
+	printf("The allowed commands are:\n");
 	for (int i = 0; i < N; i++) {
 		printf("%d: %s\n", i + 1, allowed[i]);
 	}
@@ -74,14 +75,15 @@ int main() {
 			argv[currentArg][currentPos] = line[i];
 			currentPos++;
 		}
-
+		argv[currentArg][currentPos] = '\0';
 		argv[currentArg + 1] = NULL;
 
 		// print argv debugging
-		printf("cmd: %s\n", argv[0]);
+		/* printf("cmd: %s\n", argv[0]);
 		for (int i = 1; i < currentArg + 2; i++) {
 			printf("argv[%d]: %s\n", i, argv[i]);
 		}
+		printf("\n"); */
 
 		// 1-9
 		if (toSpawn(argv[0])) {
@@ -107,7 +109,7 @@ int main() {
 			}
 
 			if (WIFEXITED(status)) {
-				fprintf(stderr, "Process exited with status %d\n", WEXITSTATUS(status));
+				// fprintf(stderr, "Process exited with status %d\n", WEXITSTATUS(status));
 			}
 
 			freeMemory(argv);
