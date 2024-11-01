@@ -13,6 +13,7 @@ char *allowed[N] = {"cp","touch","mkdir","ls","pwd","cat","grep","chmod","diff",
 
 // deallocates argv elements
 void freeMemory(char** argv) {
+	return;
 	for (int i = 0; argv[i] != NULL; i++) {
 		if (i > 22) break;
 		if (argv[i] == NULL) continue;
@@ -29,10 +30,6 @@ int toSpawn(char* cmd) {
 	}
 
 	return 0;
-}
-
-void cd(char* destination) {
-	chdir(destination);
 }
 
 void help() {
