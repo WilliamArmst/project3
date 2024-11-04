@@ -115,7 +115,7 @@ int main() {
 		// cd
 		if (strcmp(argv[0], "cd") == 0) {
 			if (currentArg > 1) {
-				perror("-rsh: cd: too many arguments\n");
+				printf("-rsh: cd: too many arguments\n");
 			} else if (currentArg == 1) {
 				chdir(argv[1]);
 			}
