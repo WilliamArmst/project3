@@ -13,7 +13,6 @@ char *allowed[N] = {"cp","touch","mkdir","ls","pwd","cat","grep","chmod","diff",
 
 // deallocates argv elements
 void freeMemory(char** argv) {
-	return;
 	for (int i = 0; argv[i] != NULL; i++) {
 		if (i > 22) break;
 		if (argv[i] == NULL) continue;
@@ -116,7 +115,7 @@ int main() {
 		// cd
 		if (strcmp(argv[0], "cd") == 0) {
 			if (currentArg > 1) {
-				printf("-rsh: cd: too many arguments\n");
+				perror("-rsh: cd: too many arguments\n");
 			} else if (currentArg == 1) {
 				chdir(argv[1]);
 			}
