@@ -61,6 +61,7 @@ int main() {
 			if (line[i] == '\0') break;
 			if (line[i] == '\n') continue;
 			if (line[i] == ' ') {
+				if (currentPos == 0) continue;
 				argv[currentArg][currentPos] = '\0';
 				currentArg++;
 				currentPos = 0;
@@ -72,7 +73,12 @@ int main() {
 			currentPos++;
 		}
 		argv[currentArg][currentPos] = '\0';
-		argv[currentArg + 1] = NULL;
+		if (argv[currentArg][0] == '\0') {
+			free(argv[currentArg]);
+			argv[currentArg] = NULL;
+		} else {
+			argv[currentArg + 1] = NULL;
+		}
 
 		// print argv debugging
 		/* printf("cmd: %s\n", argv[0]);
